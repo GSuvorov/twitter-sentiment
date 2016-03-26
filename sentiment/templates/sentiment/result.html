@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<form action="{% url 'details' %}" method="POST">
+		{% csrf_token %}
+		<p align="middle"> {{ person_name }} </p>
+		{% for key, value in sentiments.items %}
+			<p align="left"> {{ key }}: {{ value }} </p>
+		{% endfor %}
+
+		<input type="hidden" name="person" value="{{ person_name }}">
+		<input type="submit" value="Список твитов">
+	</form>
+</body>
+</html>
