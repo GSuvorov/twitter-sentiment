@@ -56,11 +56,12 @@ def get_sentiment(person, count):
 	person_corpus = json.load(open('_data.json'))
 	result = analyzer.getClasses(person_corpus)
 	positive = result.count(3)/len(person_corpus)
-	negative = result.count(1)/len(person_corpus)
-	neutral = result.count(2)/len(person_corpus)	
+	neutral = result.count(2)/len(person_corpus)
+	negative = result.count(1)/len(person_corpus)	
 	sentiments["positive"] = positive
-	sentiments["negative"] = negative
 	sentiments["neutral"] = neutral
+	sentiments["negative"] = negative
+
 
 	for key in sentiments.keys():
 		print (key + ": " + str(sentiments.get(key)))

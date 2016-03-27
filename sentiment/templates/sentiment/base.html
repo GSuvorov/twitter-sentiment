@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="/static/css/bootstrap.css" >
+<link rel="stylesheet" href="/static/css/base.css" >
+<link href='https://fonts.googleapis.com/css?family=Dosis|Abel|News+Cycle|\
+Bad+Script|Ruslan+Display&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+    <title>{% block title %} {% endblock %}</title>
+    {% block head %} {% endblock %}
+
+</head>
+<body>
+
+<div class="header-bar">
+   <h1>Twitter Sentiment Analyzer</h1>
+</div>
+<div class="content" >
+{% block body %} {% endblock %}
+</div>
+</body>
+</html>

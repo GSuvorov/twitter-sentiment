@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block body %}
 	{% for tweet in tweets %}
-		<p align="middle">{{ tweet }}</p>
+		<p id="pool" align="middle">{{ tweet }}</p>
 	{% endfor %}	
-</body>
-</html>
+{% endblock %}

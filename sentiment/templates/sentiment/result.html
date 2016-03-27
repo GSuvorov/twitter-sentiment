@@ -1,18 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block body %}
 	<form action="{% url 'details' %}" method="POST">
 		{% csrf_token %}
-		<p align="middle"> {{ person_name }} </p>
+		<h3 align="middle"> {{ person_name }} </h3>
 		{% for key, value in sentiments.items %}
-			<p align="left"> {{ key }}: {{ value }} </p>
+			<p id="polar" align="center"> {{ key }}: <span class="badge">{{ value }}</span> </p>
 		{% endfor %}
 
 		<input type="hidden" name="person" value="{{ person_name }}">
-		<input type="submit" value="Список твитов">
+		<button type="buton" class="btn btn-success">Список твитов></button>
 	</form>
-</body>
-</html>
+{% endblock %}

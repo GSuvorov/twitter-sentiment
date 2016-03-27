@@ -1,14 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<title>TSA</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block body %}
 	<form action="{% url 'result' %}" method="POST">
 		{% csrf_token %}
-		<p align="middle"><input type="text" name="person" required placeholder="Введите имя и фамилию" size="30" style="font-size: 42px;">
-		<input type="submit", size="10" value="Найти" style="font-size: 42px"></p>
+
+
+		<div id="parent"><input type="text" name="person" required placeholder="Введите имя и фамилию" size="20" style="font-size: 42px;">
+		<input type="submit", size="10" value="Найти" style="font-size: 42px"></div>
+
 	</form>
-</body>
-</html>
+
+{% endblock %}
+

@@ -47,3 +47,4 @@ def get_tweets_list():
 	for tweet in tweets:
 		searched_tweets.append(tweet["text"])
 	return searched_tweets
+
