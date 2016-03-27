@@ -8,6 +8,7 @@ from sklearn import cross_validation
 import sklearn.feature_extraction.text
 from sklearn.preprocessing import LabelEncoder
 from sklearn.linear_model import SGDClassifier
+from sklearn.linear_model import PassiveAggressiveClassifier
 # from sklearn.naive_bayes import MultinomialNB
 from sklearn.feature_extraction.text import TfidfVectorizer
 from numpy import *
@@ -25,7 +26,7 @@ class SentimentAnalyzer:
 		
 		self.le.fit(text)
 		y_train = self.le.fit_transform(polarity)
-		# print(self.le.inverse_transform(y_train))
+		print(self.le.inverse_transform(y_train))
 		cv =  cross_validation.StratifiedKFold(y_train, n_folds=10)
 
 		# С ngram_range можно поэкспериментировать
@@ -33,6 +34,7 @@ class SentimentAnalyzer:
 
 		X_train = self.vectorizer.fit_transform(text)
 		self.classifier = SGDClassifier().fit(X_train, y_train)
+		# self.classifier = PassiveAggressiveClassifier().fit(X_train, y_train)
 		# self.classifier = MultinomialNB().fit(X_train, y_train)
 
 		# print(vectorizer.inverse_transform(X_train))
@@ -44,20 +46,20 @@ class SentimentAnalyzer:
 		
 		# print(pred.tolist())
 		return pred.tolist()
-training_corpus = json.load(open(os.path.join(BASE_DIR ,'algorythm/tweets.json')))
 
 def get_sentiment(person, count):
 	sentiments = dict()
 
 	analyzer = SentimentAnalyzer()
-
-	informator.getPerson(person, count)
+	training_corpus = json.load(open(os.path.join(BASE_DIR ,'algorythm/tweets.json')))
 	analyzer.train(training_corpus)
+	informator.getPerson(person, count)
 	person_corpus = json.load(open('_data.json'))
 	result = analyzer.getClasses(person_corpus)
-	positive = result.count(3)/len(person_corpus)
-	neutral = result.count(2)/len(person_corpus)
-	negative = result.count(1)/len(person_corpus)	
+	print(result)
+	positive = result.count(2)/len(person_corpus)
+	neutral = result.count(1)/len(person_corpus)
+	negative = result.count(0)/len(person_corpus)
 	sentiments["positive"] = positive
 	sentiments["neutral"] = neutral
 	sentiments["negative"] = negative

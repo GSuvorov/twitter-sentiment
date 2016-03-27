@@ -17,16 +17,16 @@ def page_index(request):
 
 def page_result(request):
 	person_name = request.POST["person"]
-	sentiments = get_sentiment(person_name, 200)
+	sentiments = get_sentiment(person_name, 100)
 
-	person_negative_polarity = sentiments["positive"]
-	person_positive_polarity = sentiments["negative"]
+	person_positive_polarity = sentiments["positive"]
 	person_neutral_polarity = sentiments["neutral"]
+	person_negative_polarity = sentiments["negative"]
 
 	Person.objects.create(name=person_name,
 		positive_polarity=person_positive_polarity,
+		neutral_polarity=person_neutral_polarity,
 		negative_polarity=person_negative_polarity,
-		neutral_polarity=person_neutral_polarity
 	)
 
 	context = RequestContext(request,
