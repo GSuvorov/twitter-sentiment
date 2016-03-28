@@ -1,11 +1,11 @@
 body{
-    background-color: #00b8ff;
+    background-color: #ffffff;
 }
 #parent {
 	    padding: 20%;
 	}
 h1 { font-family: 'Abel', serif; font-weight: 400; }
 
-h3 { font-family: 'Ruslan Display', serif; font-weight: 400; color: oldlace }
-#polar { font-family: 'Abel', serif; font-weight: 600; color: oldlace }
-#pool { font-family: 'Bad Script', cursive; font-weight: 400; }
+h3 { font-family: 'Ruslan Display', serif; font-weight: 400; }
+#polar { font-family: 'Abel', serif; font-weight: 600; }
+#pool { font-family: 'Bad Script', serif; font-weight: 400; }
