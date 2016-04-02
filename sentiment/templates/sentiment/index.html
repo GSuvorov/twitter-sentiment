@@ -4,9 +4,10 @@
 		{% csrf_token %}
 
 
-		<div id="parent"><input type="text" name="person" required placeholder="Введите имя и фамилию" size="20" style="font-size: 42px;">
-		<input type="submit", size="10" value="Найти" style="font-size: 42px"></div>
+		<div id="parent"><input type="text" name="person" class="ghost-input" required placeholder="Введите имя и фамилию" size="20" style="font-size: 42px;">
+		<input type="submit" class="ghost-button" value="Search">
 
+        </div>
 	</form>
 
 {% endblock %}
