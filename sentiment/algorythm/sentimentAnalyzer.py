@@ -28,20 +28,14 @@ class SentimentAnalyzer:
 		y_train = self.le.fit_transform(polarity)
 		print(self.le.inverse_transform(y_train))
 		cv =  cross_validation.StratifiedKFold(y_train, n_folds=10)
-
-		# С ngram_range можно поэкспериментировать
 		self.vectorizer = TfidfVectorizer(analyzer='char_wb', ngram_range=(1, 2))
 
 		X_train = self.vectorizer.fit_transform(text)
 		self.classifier = SGDClassifier().fit(X_train, y_train)
-		# self.classifier = PassiveAggressiveClassifier().fit(X_train, y_train)
-		# self.classifier = MultinomialNB().fit(X_train, y_train)
 
-		# print(vectorizer.inverse_transform(X_train))
 	def getClasses(self, corpus):
 		text = list(map(lambda x: x['text'], corpus))
 		x = self.vectorizer.transform(text)
-		# print(self.vectorizer.inverse_transform(x))
 		pred = self.classifier.predict(x)
 		
 		# print(pred.tolist())
@@ -70,4 +64,3 @@ def get_sentiment(person, count):
 
 	return sentiments
 
-# get_sentiment("сергей шнуров", 10)

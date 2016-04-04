@@ -19,21 +19,6 @@ def getPerson(person, count):
 	query = person
 	max_tweets = count
 
-	# нужно написать\скачать модуль для перевода в транслит
-
-	# searched_tweets = []
-	# last_id = -1
-	# while len(searched_tweets) < max_tweets:
-	#     count = max_tweets - len(searched_tweets)
-	#     try:
-	#         new_tweets = api.search(q=query, count=count, max_id=str(last_id - 1))
-	#         if not new_tweets:
-	#             break
-	#         searched_tweets.extend(new_tweets)
-	#         last_id = new_tweets[-1].id
-	#     except tweepy.TweepError as e:
-	#         break
-
 	new_tweets = api.search(q=query, count=count)
 	file = open('_data.json' , 'w')
 
