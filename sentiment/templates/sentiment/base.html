@@ -11,12 +11,27 @@ Bad+Script|Ruslan+Display|Open+Sans+Condensed|&subset=latin,cyrillic' rel='style
 </head>
 <body>
 
-<div class="header-bar">
-   <h1>Twitter Sentiment Analyzer</h1>
-</div>
+{#<nav class="navbar" role="navigation">#}
 
+{#<div class="header-bar">#}
+   <h1><a href="{% url 'index'%}" class="header">Twitter Sentiment Analyzer</a></h1>
+{#</div>#}
+
+{#</nav>#}
 <div class="content" >
 {% block body %} {% endblock %}
 </div>
+
+
+{#<div class="content" align="center">#}
+{#</div>#}
+<div class="footer" align="center">
+
+   <a  class="ghost-menu" href="{% url 'about' %}">About</a>
+
+</div>
+
+
+
 </body>
 </html>

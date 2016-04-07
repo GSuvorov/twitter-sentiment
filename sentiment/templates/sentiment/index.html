@@ -3,8 +3,8 @@
 	<form action="{% url 'result' %}" method="POST">
 		{% csrf_token %}
 
-
-		<div id="parent"><input type="text" name="person" class="ghost-input"
+		<div id="parent">
+        <input type="text" name="person" class="ghost-input"
                                 required placeholder="Введите имя(на русском)">
 		<input type="submit" class="ghost-button" value="Analyze">
 

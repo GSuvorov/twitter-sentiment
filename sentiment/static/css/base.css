@@ -5,9 +5,9 @@ body{
 	background-attachment:fixed;
 }
 #parent {
-	    padding:20%;
+padding: 200px;
 	}
-h1 { font-family: 'Abel', serif; font-weight: 400; color: white }
+.header { font-family: 'Abel', serif; font-weight: 200; color: white; text-decoration: none}
 
 h3 { font-family: 'Ruslan Display', serif; font-weight: 400;color: white }
 #polar { font-family: 'Abel', serif; font-weight: 600;color: white }
@@ -16,6 +16,7 @@ h3 { font-family: 'Ruslan Display', serif; font-weight: 400;color: white }
 .ghost-button {
 	background-color: transparent;
   display: inline-block;
+    align-self: center;
   width: 200px;
   padding: 8px;
   color: #fff;
@@ -46,4 +47,38 @@ h3 { font-family: 'Ruslan Display', serif; font-weight: 400;color: white }
   outline: none;
   text-decoration: none;
 	font-family: 'Abel';
+    align-self: center;
+}
+
+.ghost-menu {
+	background-color: transparent;
+  display: inline-block;
+  width: 100px;
+  padding: 6px;
+    /*margin-bottom: 20px;*/
+    /*margin-right: 10px;*/
+  color: #fff;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  text-align: center;
+  outline: none;
+  text-decoration: none;
+  min-height:100%;
+  position:relative
+}
+.ghost-menu:hover,
+.ghost-menu:active {
+    background-color: #cccccc;
+    color: white;
+}
+
+/*.content{*/
+    /*padding: 0 0 50px 0;*/
+/*}*/
+.footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+
 }
