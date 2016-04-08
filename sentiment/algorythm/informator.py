@@ -5,7 +5,7 @@ import tweepy
 from tweepy.parsers import JSONParser
 
 searched_tweets = list()
-
+# Скрипт, для получения твитов, стандартное API позволяет выкачать только 100. Нужно думать, как качать больше
 def getPerson(person, count):
 	consumer_key = "vAFqO3jFbVUXkSVKSitaUiU4Q"
 	consumer_secret = "4aG1sNq2pwDjEvpvG7FbR63GMCrQQfbTkP8Z0kdrLvkE8MCv8A"

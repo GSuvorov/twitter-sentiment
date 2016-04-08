@@ -47,4 +47,5 @@ def page_details(request):
 	return HttpResponse(template.render(context))
 
 def page_about(request):
-	return render(request, 'about.html', {})
+	template = loader.get_template("sentiment/about.html")
+	return HttpResponse(template.render())

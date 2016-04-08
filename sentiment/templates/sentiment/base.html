@@ -1,37 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 <head>
 <link rel="stylesheet" href="/static/css/bootstrap.css" >
-<link rel="stylesheet" href="/static/css/base.css" >
+<link rel="stylesheet" href="/static/css/base.css">
 <link href='https://fonts.googleapis.com/css?family=Dosis|Abel|News+Cycle|\
 Bad+Script|Ruslan+Display|Open+Sans+Condensed|&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
     <title>{% block title %} {% endblock %}</title>
-    {% block head %} {% endblock %}
-
+    <nav class="navbar navbar-light bg-faded">
+      <a class="navbar-brand" href="/">RTSA</a>
+    </nav>
 </head>
+
 <body>
-
-{#<nav class="navbar" role="navigation">#}
-
-{#<div class="header-bar">#}
-   <h1><a href="{% url 'index'%}" class="header">Twitter Sentiment Analyzer</a></h1>
-{#</div>#}
-
-{#</nav>#}
-<div class="content" >
-{% block body %} {% endblock %}
-</div>
+    <div class="container">
+        {% block body %} {% endblock %}
+    </div>
 
 
-{#<div class="content" align="center">#}
-{#</div>#}
-<div class="footer" align="center">
+<footer>
+    <div class="wrapper">
+        <div class="container-fluid">
+            <a  class="btn btn-success-outline" href="{% url 'about' %}">About</a>
+       </div>
+    </div>
+</footer>
 
-   <a  class="ghost-menu" href="{% url 'about' %}">About</a>
 
-</div>
-
-
-
+<!-- Place this tag right after the last button or just before your close body tag. -->
 </body>
 </html>

@@ -17,30 +17,37 @@ from . import informator
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+#Непосредственно анализатор твитов
 class SentimentAnalyzer:
+
+    # Метод для обучения тренировочной выборки -- выборки твитов, с заранее размеченной "тональностью"
 
 	def train(self,corpus):
 		self.le = preprocessing.LabelEncoder()
-		text = list(map (lambda x: x['text'], corpus))
+		text = list( map (lambda x:x['text'], corpus))
 		polarity = list(map(lambda x: x['polarity'], corpus))
-		
 		self.le.fit(text)
+		# Приводим в порядок классы тренировочной выборки
 		y_train = self.le.fit_transform(polarity)
 		print(self.le.inverse_transform(y_train))
 		cv =  cross_validation.StratifiedKFold(y_train, n_folds=10)
 		self.vectorizer = TfidfVectorizer(analyzer='char_wb', ngram_range=(1, 2))
-
+		# Векторизуем объекты тренировочной выборки
 		X_train = self.vectorizer.fit_transform(text)
 		self.classifier = SGDClassifier().fit(X_train, y_train)
 
+    # Метод, для получения предикатов тестовой (или рабочей) выборки. Короче говоря, здесь твиты, которые сюда попали
+		# получают "предсказание" о том, какой же они тональности являются. Этот предикат получается благодаря тому, что
+	# мы обучили классификатор предыдущем методом на тренировочной выборке.
 	def getClasses(self, corpus):
-		text = list(map(lambda x: x['text'], corpus))
+		text = list(map(lambda x:x['text'], corpus))
 		x = self.vectorizer.transform(text)
 		pred = self.classifier.predict(x)
 		
 		# print(pred.tolist())
 		return pred.tolist()
 
+# Метод ака main. Берем джейсон с твитами, фигачим его в анализатор, получаем тональности, пишем в словарь
 def get_sentiment(person, count):
 	sentiments = dict()
 

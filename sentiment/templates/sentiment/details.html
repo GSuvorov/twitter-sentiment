@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
 {% block body %}
-	{% for tweet in tweets %}
-		<p id="pool" align="middle">{{ tweet }}</p>
-	{% endfor %}	
+
+{#Рабочая страница, вывод будет сделан как-то по-другому, пока не придумал как#}
+    <div class="container" style="padding-top: 20px">
+        {% for tweet in tweets %}
+            <p id="pool" align="middle">{{ tweet }}</p>
+        {% endfor %}
+
+    </div>
 {% endblock %}

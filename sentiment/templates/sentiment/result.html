@@ -2,12 +2,15 @@
 {% block body %}
 	<form action="{% url 'details' %}" method="POST">
 		{% csrf_token %}
+
+    <div class="container" style="padding-top: 40px">
 		<h3 align="middle"> {{ person_name }} </h3>
 		{% for key, value in sentiments.items %}
 			<p id="polar" align="center"> {{ key }}: <span class="badge">{{ value }}</span> </p>
 		{% endfor %}
-
 		<input type="hidden" name="person" value="{{ person_name }}">
-        <input type="submit" class="ghost-button" value="Check tweets">
+        <button type="submit" class="btn btn-info-outline center-block">Check tweets</button>
+
+    </div>
 	</form>
 {% endblock %}

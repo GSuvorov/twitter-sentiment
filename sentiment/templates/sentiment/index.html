@@ -1,14 +1,33 @@
 {% extends 'base.html' %}
+
 {% block body %}
 	<form action="{% url 'result' %}" method="POST">
 		{% csrf_token %}
+{#<div class="container" style="padding-top: 20px">#}
+{#        <h2>FUCKING TWITTER</h2>#}
+{#    </div>#}
 
-		<div id="parent">
-        <input type="text" name="person" class="ghost-input"
-                                required placeholder="Введите имя(на русском)">
-		<input type="submit" class="ghost-button" value="Analyze">
 
+<div class="row">
+
+    <div class="col-md-6 col-md-offset-3" style="padding-top: 100px;">
+        <div class="container" style="padding-top: 20px; color: white">
+
+<div class="jumbotron" style="background:rgba(0, 0, 0, 0.13) !important">
+	<h1 align="center">RUSSIAN.TWITTER.SENTIMENT.</h1>
+    <p style="font-family: 'Abel', serif" align="center"> Opinion Mining in the Russian-language Twitter. To find out what they write, enter a person in Russian</p>
+
+    <div class="input-group">
+        <input type="text" name="person" class="form-control"
+                                required placeholder="Name in Russian">
+                <div class="input-group-btn">
+            <button type="submit" class="btn btn-success-outline">Analyze</button>
+                    </div>
+            </div>
         </div>
+        </div>
+        </div>
+</div>
 	</form>
 
 {% endblock %}
