@@ -41,12 +41,13 @@ class SentimentAnalyzer:
 	# мы обучили классификатор предыдущем методом на тренировочной выборке.
 	def getClasses(self, corpus):
 		text = list(map(lambda x:x['text'], corpus))
+		if not text:
+			return 0
 		x = self.vectorizer.transform(text)
 		pred = self.classifier.predict(x)
-		
 		# print(pred.tolist())
 		return pred.tolist()
-
+1
 # Метод ака main. Берем джейсон с твитами, фигачим его в анализатор, получаем тональности, пишем в словарь
 def get_sentiment(person, count):
 	sentiments = dict()
@@ -58,16 +59,29 @@ def get_sentiment(person, count):
 	person_corpus = json.load(open('_data.json'))
 	result = analyzer.getClasses(person_corpus)
 	print(result)
-	positive = result.count(2)/len(person_corpus)
-	neutral = result.count(1)/len(person_corpus)
-	negative = result.count(0)/len(person_corpus)
-	sentiments["positive"] = positive
-	sentiments["neutral"] = neutral
-	sentiments["negative"] = negative
+	print('COUNT')
+	if result != 0:
+		positive = result.count(2)/len(person_corpus)
+		neutral = result.count(1)/len(person_corpus)
+		negative = result.count(0)/len(person_corpus)
+		sentiments["positive"] = positive
+		sentiments["neutral"] = neutral
+		sentiments["negative"] = negative
 
 
-	for key in sentiments.keys():
-		print (key + ": " + str(sentiments.get(key)))
+		for key in sentiments.keys():
+			print (key + ": " + str(sentiments.get(key)))
 
-	return sentiments
+		return sentiments
+
+	else:
+		sentiments["positive"] = 0
+		sentiments["neutral"] = 0
+		sentiments["negative"] = 0
+
+
+		for key in sentiments.keys():
+			print (key + ": " + str(sentiments.get(key)))
+
+		return sentiments
 

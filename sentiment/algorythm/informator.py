@@ -33,3 +33,4 @@ def get_tweets_list():
 		searched_tweets.append(tweet["text"])
 	return searched_tweets
 
+
