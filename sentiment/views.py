@@ -38,8 +38,8 @@ def page_result(request):
 
 def page_details(request):
 	person_name = request.POST["person"]
-	tweets = get_tweets_list()
-	context = RequestContext(request, 
+	tweets = get_tweets_list(person_name)
+	context = RequestContext(request,
 		{"tweets": tweets}
 	)
 	template = loader.get_template("sentiment/details.html")
@@ -47,5 +47,11 @@ def page_details(request):
 	return HttpResponse(template.render(context))
 
 def page_about(request):
+	context = RequestContext(request,{},)
 	template = loader.get_template("sentiment/about.html")
-	return HttpResponse(template.render())
+	return HttpResponse(template.render(context))
+
+def page_contact(request):
+	context = RequestContext(request,{},)
+	template = loader.get_template("sentiment/contact.html")
+	return HttpResponse(template.render(context))

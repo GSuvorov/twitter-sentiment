@@ -4,7 +4,6 @@
 	<form action="{% url 'result' %}" method="POST">
 		{% csrf_token %}
 {#<div class="container" style="padding-top: 20px">#}
-{#        <h2>FUCKING TWITTER</h2>#}
 {#    </div>#}
 
 
@@ -13,7 +12,7 @@
     <div class="col-md-6 col-md-offset-3" style="padding-top: 100px;">
         <div class="container" style="padding-top: 20px; color: white">
 
-        <div class="jumbotron" style="background:rgba(0, 0, 0, 0.13) !important">
+        <div class="jumbotron" style="background:rgba(0, 0, 0, 0.13) !important;  min-width:500px">
             <h1 align="center">RUSSIAN.TWITTER.SENTIMENT.</h1>
             <p style="font-family: 'Abel', serif" align="center"> Opinion Mining in the Russian-language Twitter. To find out what they write, enter a person in Russian</p>
 
@@ -31,4 +30,3 @@
 	</form>
 
 {% endblock %}
-

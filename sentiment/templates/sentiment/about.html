@@ -3,23 +3,25 @@
 
 <div class="container" style="padding-top: 20px; color: white">
 
-<div class="jumbotron" style="background:rgba(0, 0, 0, 0.13) !important">
+    <div class="jumbotron" style="background:rgba(0, 0, 0, 0.13) !important">
+        <p>This application is <strong>attempt</strong> to analyze statements (about people, e.g. politicans) in the Russian-language Twitter</p>
 
-<p>Данное приложение – <strong>попытка</strong> анализа высказываний в русскоязычном твиттере.</p>
-<p>Главной целью является попытка получения информации о мнениях о политиках или же определенных известных личностях.</p>
-<p>Данное приложение должно представлять собой WEB-приложение на Django для адекватной оценки и аналитики мнений.</p>
-<p>На сегодня в репозитории содержится:</p>
-<ul>
-<li>Обучающий алгоритм (сделан с использованием библиотеки sklearn)</li>
-<li>скрипт получения информации из твиттера</li>
-<li>выборка обученных твитов</li>
-<li>каркас Django-application</li>
-</ul>
-<p>Результаты всех тестов на данный момент довольно в основном "нейтральные",
-    обучающая выборка tweets.json из просторов интернета, (и судя по результатам обучена не на “политических твитах”).</p>
-<p>Также не реализована "очистка" выборки от спама и множества одинаковых ретвитов</p>
-
-</div>
+        <p>In this project we use next technologies:<p>
+        <ul>
+            <li>Python 3 + Django (for application)</li>
+            <li>scikit-learn (for learning algorythm and training twitter corpus</li>
+            <li>Tweepy (for getting tweets)</li>
+            <li>Bootstrap 4 (for front-end)</li>
+            <li>Chart.js (for charts)</li>    
+        </ul>
+        <strong>Warning!</strong><p>Sometimes you can see "neutral" results of analysis, it's happend because our
+            training corpus was found from Internet. Now we are working on the creation our tweet-corpus.Also, our sample is too "noisy" (because of spam, advertising)</p>
+        <strong><p>This project created by students of IRIT-RTF (IT-department):</p></strong>
+        <ul>
+        <li>Dein Evgeniy</li>
+        <li>Chislov Oleg</li>
+        </ul>
+    </div>
 </div>
 
 

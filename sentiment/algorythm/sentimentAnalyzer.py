@@ -9,11 +9,11 @@ import sklearn.feature_extraction.text
 from sklearn.preprocessing import LabelEncoder
 from sklearn.linear_model import SGDClassifier
 from sklearn.linear_model import PassiveAggressiveClassifier
-# from sklearn.naive_bayes import MultinomialNB
 from sklearn.feature_extraction.text import TfidfVectorizer
 from numpy import *
 
 from . import informator
+from . import translit
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -21,7 +21,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 class SentimentAnalyzer:
 
     # Метод для обучения тренировочной выборки -- выборки твитов, с заранее размеченной "тональностью"
-
 	def train(self,corpus):
 		self.le = preprocessing.LabelEncoder()
 		text = list( map (lambda x:x['text'], corpus))
@@ -37,17 +36,16 @@ class SentimentAnalyzer:
 		self.classifier = SGDClassifier().fit(X_train, y_train)
 
     # Метод, для получения предикатов тестовой (или рабочей) выборки. Короче говоря, здесь твиты, которые сюда попали
-		# получают "предсказание" о том, какой же они тональности являются. Этот предикат получается благодаря тому, что
+	# получают "предсказание" о том, какой же они тональности являются. Этот предикат получается благодаря тому, что
 	# мы обучили классификатор предыдущем методом на тренировочной выборке.
-	def getClasses(self, corpus):
+	def get_classes(self, corpus):
 		text = list(map(lambda x:x['text'], corpus))
 		if not text:
 			return 0
 		x = self.vectorizer.transform(text)
 		pred = self.classifier.predict(x)
-		# print(pred.tolist())
 		return pred.tolist()
-1
+
 # Метод ака main. Берем джейсон с твитами, фигачим его в анализатор, получаем тональности, пишем в словарь
 def get_sentiment(person, count):
 	sentiments = dict()
@@ -55,9 +53,12 @@ def get_sentiment(person, count):
 	analyzer = SentimentAnalyzer()
 	training_corpus = json.load(open(os.path.join(BASE_DIR ,'algorythm/tweets.json')))
 	analyzer.train(training_corpus)
-	informator.getPerson(person, count)
-	person_corpus = json.load(open('_data.json'))
-	result = analyzer.getClasses(person_corpus)
+	informator.get_person(person, count)
+	try:
+		person_corpus = json.load(open('JSON/data_' + translit.translit(person.replace(" ", "_").lower()) + '.json'))
+	except FileNotFoundError:
+		person_corpus = {}
+	result = analyzer.get_classes(person_corpus)
 	print(result)
 	print('COUNT')
 	if result != 0:
@@ -68,10 +69,8 @@ def get_sentiment(person, count):
 		sentiments["neutral"] = neutral
 		sentiments["negative"] = negative
 
-
 		for key in sentiments.keys():
 			print (key + ": " + str(sentiments.get(key)))
-
 		return sentiments
 
 	else:
@@ -79,9 +78,6 @@ def get_sentiment(person, count):
 		sentiments["neutral"] = 0
 		sentiments["negative"] = 0
 
-
 		for key in sentiments.keys():
 			print (key + ": " + str(sentiments.get(key)))
-
 		return sentiments
-

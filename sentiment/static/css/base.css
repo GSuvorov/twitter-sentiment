@@ -7,7 +7,6 @@ padding: 200px 400px;
 
 	}
 
-
 .header-test { font-family: 'Abel', serif;
   font-weight: 200;
   color: white;
@@ -27,4 +26,21 @@ h3 { font-family: 'Ruslan Display', serif; font-weight: 400;color: white }
     bottom: 10px;
     width: 100%;
     left:0;
+}
+
+#swrapper {
+  width:350px;
+  height: 70px;
+  align-self: middle;
+}
+
+.section {
+  float: left;
+  height: 60px;
+  margin-left: 10px;
+  width: 150px;
+}
+
+#swrapper div:first-child {
+  margin-left:0px;
 }
